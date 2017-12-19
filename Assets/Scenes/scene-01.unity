@@ -398,7 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Hovering
-    clip: {fileID: 8300000, guid: 447666c423e365d41a42b7442fd1f351, type: 3}
+    clip: {fileID: 8300000, guid: 8bfc84f69bf809f47ad87b80b70a28b2, type: 3}
     volume: 0.3
     pitch: 1
     loop: 0

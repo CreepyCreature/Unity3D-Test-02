@@ -42,7 +42,8 @@ public class AudioManager : MonoBehaviour {
 
         //Debug.Log("PlaySound(" + sound_name + ")");
 
-        s.source.Play();
+        //s.source.Play();
+        s.source.PlayDelayed(0f);
     }
 
     public void StopSound (string sound_name)
