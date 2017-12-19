@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour {
+public class CameraController : MonoBehaviour
+{
+    [SerializeField]
+    GameObject player_;
 
-    [SerializeField] GameObject player_;
     private Vector3 offset_;
 
 	// Use this for initialization

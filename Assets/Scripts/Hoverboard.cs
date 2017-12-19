@@ -9,6 +9,18 @@ public class Hoverboard : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (other.attachedRigidbody != null)
+        {
             other.attachedRigidbody.AddForce(Vector3.up * hoverforce_, ForceMode.Acceleration);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        AudioManager.instance.PlaySound("Hovering");
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        AudioManager.instance.StopSound("Hovering");
     }
 }
