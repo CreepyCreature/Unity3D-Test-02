@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4385323, g: 0.4866326, b: 0.5669092, a: 1}
+  m_IndirectSpecularColor: {r: 0.44770157, g: 0.4933287, b: 0.5520154, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1083,13 +1083,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1438309233}
-  m_LocalRotation: {x: 0.56735194, y: -0.25091863, z: 0.21998227, w: 0.7528343}
+  m_LocalRotation: {x: 0.19126914, y: -0.65443504, z: 0.013786668, w: 0.73139656}
   m_LocalPosition: {x: 3.86, y: 9.98, z: -6.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 74.718, y: -29.100002, z: 10.162001}
+  m_LocalEulerAnglesHint: {x: 17.327002, y: -85.77901, z: -13.953001}
 --- !u!1001 &1539173395
 Prefab:
   m_ObjectHideFlags: 0
@@ -1180,10 +1180,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1700593976930266, guid: bfc7516791c0f804187f5cf511a311ef, type: 2}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 114080592671983512, guid: bfc7516791c0f804187f5cf511a311ef,
         type: 2}
       propertyPath: coin_count_text_
@@ -1194,6 +1190,10 @@ Prefab:
       propertyPath: win_text_
       value: 
       objectReference: {fileID: 2076269540}
+    - target: {fileID: 1700593976930266, guid: bfc7516791c0f804187f5cf511a311ef, type: 2}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfc7516791c0f804187f5cf511a311ef, type: 2}
   m_IsPrefabParent: 0

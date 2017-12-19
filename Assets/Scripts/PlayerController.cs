@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Range(1, 100)] public float speed_;
+    [Range(1f, 100f)]
+    public float speed_;
 
     public GameObject follower_;
-    [Range(0, 20)]public float follower_distance_ = 2.0f;
+
+    [Range(0f, 20f)]
+    public float follower_distance_ = 2.0f;
     
     private Rigidbody rigidbody_;
-
-    //private List<GameObject> created_objects_ = new List<GameObject>();
 
     // Use this for initialization
     void Start()
@@ -19,13 +20,13 @@ public class PlayerController : MonoBehaviour
         rigidbody_ = GetComponent<Rigidbody>();
 	}
 		
-	void Update ()
+	void FixedUpdate ()
     {
         float horizontal_axis = Input.GetAxis("Horizontal");
         float vertical_axis = Input.GetAxis("Vertical");
 
         Vector3 move_force = new Vector3(horizontal_axis, 0, vertical_axis);
-        rigidbody_.AddForce(move_force * speed_);
+        rigidbody_.AddForce(move_force * speed_ * Time.deltaTime * 100);
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
