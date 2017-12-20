@@ -8,7 +8,6 @@ public class AudioManager : MonoBehaviour {
 
     public static AudioManager instance;
 
-	// Use this for initialization
 	void Awake ()
     {
         if (instance == null)
@@ -30,8 +29,8 @@ public class AudioManager : MonoBehaviour {
             s.source.loop = s.loop;
         }
 	}
-	
-	public void PlaySound (string sound_name)
+
+    public void PlaySound (string sound_name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == sound_name);
         if (s == null)
@@ -39,11 +38,13 @@ public class AudioManager : MonoBehaviour {
             Debug.LogWarning("Sound: " + sound_name + " not found!");
             return;
         }
-
-        //Debug.Log("PlaySound(" + sound_name + ")");
-
-        //s.source.Play();
-        s.source.PlayDelayed(0f);
+        
+        if (s.source.isPlaying)
+            // The problem with PlayOneShot is that you cannot Stop
+            // the audio clip from playing until it's finished
+            s.source.PlayOneShot(s.clip);
+        else
+            s.source.PlayDelayed(0f);
     }
 
     public void StopSound (string sound_name)

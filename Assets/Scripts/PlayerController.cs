@@ -45,4 +45,15 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            Debug.DrawRay(contact.point, contact.normal, Color.white);
+        }
+
+        if (collision.relativeVelocity.magnitude > 10f)
+            AudioManager.instance.PlaySound("Crash");
+    }
 }
