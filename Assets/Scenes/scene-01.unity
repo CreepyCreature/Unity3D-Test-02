@@ -403,6 +403,18 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Crash
+    clip: {fileID: 8300000, guid: 176bb151d8117144a8ce56c1bbdba301, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PickUp
+    clip: {fileID: 8300000, guid: ffb749f93f714dc4d9994b3b24aced3c, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &363066510
 Transform:
   m_ObjectHideFlags: 0
@@ -1243,6 +1255,12 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 135116477616937808, guid: bfc7516791c0f804187f5cf511a311ef,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: d8119724ce9cc8e498583a78bcc6ed41,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfc7516791c0f804187f5cf511a311ef, type: 2}
   m_IsPrefabParent: 0

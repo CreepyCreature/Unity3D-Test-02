@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
         {
             PlayerResources.CollectCoin();
             other.gameObject.SetActive(false);
+            AudioManager.instance.PlaySound("PickUp");
         }
     }
 
