@@ -21,6 +21,6 @@ public class Hoverboard : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        AudioManager.instance.StopSound("Hovering");
+        //AudioManager.instance.StopSound("Hovering");
     }
 }

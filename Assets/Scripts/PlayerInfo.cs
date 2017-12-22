@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerInfo : MonoBehaviour
 {
-    public Text coin_count_text_;
-    public Text win_text_;
+    public TMPro.TMP_Text coin_count_text_;
+    public TMPro.TMP_Text win_text_;
 
     // Use this for initialization
     void Start()
@@ -19,7 +19,15 @@ public class PlayerInfo : MonoBehaviour
     public void UpdateCoins()
     {
         SetCoinCountText();
-        if (PlayerResources.coins_ >= 8)
+        if (PlayerResources.coins_ >= 10)
+        {
+            win_text_.text = "COINPOCALYPSE!";
+        }
+        else if (PlayerResources.coins_ >= 9)
+        {
+            win_text_.text = "COINTALITY!";
+        }
+        else if (PlayerResources.coins_ >= 8)
         {
             win_text_.text = "You Win!";
         }
