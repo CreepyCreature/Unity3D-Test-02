@@ -570,26 +570,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   master_volume: 1
+  music_volume: 1
+  sfx_volume: 1
   sounds:
   - name: Hovering
+    channel: 1
     clip: {fileID: 8300000, guid: 8bfc84f69bf809f47ad87b80b70a28b2, type: 3}
     volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Crash
+    channel: 1
     clip: {fileID: 8300000, guid: 1fde7ae81f5432643b461ef0ca0619fa, type: 3}
     volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: PickUp
+    channel: 1
     clip: {fileID: 8300000, guid: ffb749f93f714dc4d9994b3b24aced3c, type: 3}
     volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: MainTheme
+    channel: 0
     clip: {fileID: 8300000, guid: c8a55560a723472478fd90eb0decd859, type: 3}
     volume: 0.11
     pitch: 1
@@ -722,7 +728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d5288faf019fb428ccfff7638b5178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio_mixer: {fileID: 24100000, guid: 797a868a9097a334985d93c633fb0214, type: 2}
 --- !u!224 &1362460251 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224149747246375058, guid: aea2a35b429f89e408858da1588830b4,
@@ -804,10 +809,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 42283349}
   m_HandleRect: {fileID: 1786986656}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

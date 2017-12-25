@@ -10,7 +10,6 @@ public class OptionsMenu : MonoBehaviour {
     
 	public void SetMasterVolume (float volume)
     {
-        Debug.Log(volume);
         AudioManager.instance.master_volume = volume;
 
         if (OnSoundChanged != null)

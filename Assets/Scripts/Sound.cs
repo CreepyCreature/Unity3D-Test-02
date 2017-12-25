@@ -1,10 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
 
+public enum SoundChannel
+{
+    Music,
+    SFX
+}
+
 [System.Serializable]
 public class Sound
 {
     public string name;
+
+    public SoundChannel channel;
 
     public AudioClip clip;
 
