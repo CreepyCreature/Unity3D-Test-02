@@ -41,8 +41,10 @@ public class AudioManager : MonoBehaviour {
 
     public void OnVolumeChange ()
     {
-        StopSound("MainTheme");
-        PlaySound("MainTheme");
+        foreach (Sound s in sounds)
+        {
+            s.source.volume = s.volume * AudioManager.instance.master_volume;
+        }
     }
 
     public void PlaySound (string sound_name)
