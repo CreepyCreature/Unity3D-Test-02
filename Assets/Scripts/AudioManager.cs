@@ -81,8 +81,6 @@ public class AudioManager : MonoBehaviour {
             Debug.LogWarning("Sound: " + sound_name + " not found!");
             return;
         }
-
-        s.source.volume = s.volume * master_volume;
         
         if (s.source.isPlaying)
             // The problem with PlayOneShot is that you cannot Stop
