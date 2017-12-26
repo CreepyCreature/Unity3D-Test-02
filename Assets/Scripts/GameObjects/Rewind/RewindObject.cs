@@ -40,12 +40,14 @@ public class RewindObject : MonoBehaviour
     {
         is_rewinding_ = true;
         rigidbody_.isKinematic = true;
+        AudioManager.Instance.PlaySound("Rewinding");
     }
 
     void DisengageRewind ()
     {
         is_rewinding_ = false;
         rigidbody_.isKinematic = false;
+        AudioManager.Instance.StopSound("Rewinding");
     }
 
     void Rewind()

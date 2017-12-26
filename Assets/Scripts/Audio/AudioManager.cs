@@ -63,8 +63,8 @@ public class AudioManager : MonoBehaviour {
     private void GetPlayerPrefsVolume ()
     {
         master_volume   = PlayerPrefs.GetFloat(master_prefs_key , 1.0f);
-        music_volume    = PlayerPrefs.GetFloat(sfx_prefs_key    , 1.0f);
-        sfx_volume      = PlayerPrefs.GetFloat(music_prefs_key  , 1.0f);
+        music_volume    = PlayerPrefs.GetFloat(music_prefs_key  , 1.0f);
+        sfx_volume      = PlayerPrefs.GetFloat(sfx_prefs_key    , 1.0f);
     }
 
     public void OnVolumeChange ()
