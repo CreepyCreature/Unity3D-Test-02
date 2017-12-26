@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         {
             PlayerResources.CollectCoin();
             other.gameObject.SetActive(false);
-            AudioManager.instance.PlaySound("PickUp");
+            AudioManager.Instance.PlaySound("PickUp");
         }
     }
 
@@ -55,6 +55,6 @@ public class PlayerController : MonoBehaviour
         }
 
         if (collision.relativeVelocity.magnitude > 10f)
-            AudioManager.instance.PlaySound("Crash");
+            AudioManager.Instance.PlaySound("Crash");
     }
 }

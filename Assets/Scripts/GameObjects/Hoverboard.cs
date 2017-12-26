@@ -16,7 +16,7 @@ public class Hoverboard : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        AudioManager.instance.PlaySound("Hovering");
+        AudioManager.Instance.PlaySound("Hovering");
     }
 
     private void OnTriggerExit(Collider other)

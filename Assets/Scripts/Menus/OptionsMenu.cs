@@ -2,15 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour {
 
     public delegate void SoundChanged();
     public static event SoundChanged OnSoundChanged;
-    
+
+    private string master_prefs_key = "MasterVolume";
+    private string music_prefs_key  = "MusicVolume";
+    private string sfx_prefs_key    = "SFXVolume";
+
+    void Start ()
+    {
+    }
+        
 	public void SetMasterVolume (float volume)
     {
-        AudioManager.instance.master_volume = volume;
+        AudioManager.Instance.master_volume = volume;
+        PlayerPrefs.SetFloat(master_prefs_key, volume);
 
         if (OnSoundChanged != null)
             OnSoundChanged();
@@ -18,7 +28,8 @@ public class OptionsMenu : MonoBehaviour {
 
     public void SetMusicVolume (float volume)
     {
-        AudioManager.instance.music_volume = volume;
+        AudioManager.Instance.music_volume = volume;
+        PlayerPrefs.SetFloat(music_prefs_key, volume);
 
         if (OnSoundChanged != null)
             OnSoundChanged();
@@ -26,7 +37,8 @@ public class OptionsMenu : MonoBehaviour {
 
     public void SetSFXVolume (float volume)
     {
-        AudioManager.instance.sfx_volume = volume;
+        AudioManager.Instance.sfx_volume = volume;
+        PlayerPrefs.SetFloat(sfx_prefs_key, volume);
 
         if (OnSoundChanged != null)
             OnSoundChanged();

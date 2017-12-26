@@ -3,7 +3,7 @@ using UnityEngine.Audio;
 using System;
 
 public class AudioManager : MonoBehaviour {
-    
+
     [Range(0f, 1f)]
     public float master_volume = 1.0f;
     [Range(0f, 1f)]
@@ -13,12 +13,16 @@ public class AudioManager : MonoBehaviour {
 
     public Sound[] sounds;
 
-    public static AudioManager instance;
+    public static AudioManager Instance;
 
-	void Awake ()
+    private string master_prefs_key = "MasterVolume";
+    private string music_prefs_key = "MusicVolume";
+    private string sfx_prefs_key = "SFXVolume";
+
+    void Awake ()
     {
-        if (instance == null)
-            instance = this;
+        if (Instance == null)
+            Instance = this;
         else
         {
             Destroy(gameObject);
@@ -27,21 +31,24 @@ public class AudioManager : MonoBehaviour {
 
         DontDestroyOnLoad(gameObject);
 
-		foreach (Sound s in sounds)
+        GetPlayerPrefsVolume();
+
+        foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            s.source.volume = s.volume * master_volume;
 
             // Set the source Volume depending on the channel
             switch (s.channel)
             {
                 case SoundChannel.Music:
-                    s.source.volume = s.volume * music_volume;
+                    s.source.volume *= music_volume;
                     break;
                 case SoundChannel.SFX:
-                    s.source.volume = s.volume * sfx_volume;
+                    s.source.volume *= sfx_volume;
                     break;
             }
         }        
@@ -51,6 +58,13 @@ public class AudioManager : MonoBehaviour {
     {
         PlaySound("MainTheme");
         OptionsMenu.OnSoundChanged += OnVolumeChange;
+    }
+
+    private void GetPlayerPrefsVolume ()
+    {
+        master_volume   = PlayerPrefs.GetFloat(master_prefs_key , 1.0f);
+        music_volume    = PlayerPrefs.GetFloat(sfx_prefs_key    , 1.0f);
+        sfx_volume      = PlayerPrefs.GetFloat(music_prefs_key  , 1.0f);
     }
 
     public void OnVolumeChange ()

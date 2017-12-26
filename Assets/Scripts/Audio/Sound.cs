@@ -3,8 +3,11 @@ using UnityEngine.Audio;
 
 public enum SoundChannel
 {
+    Master,
     Music,
-    SFX
+    SFX,
+
+    Count__
 }
 
 [System.Serializable]
