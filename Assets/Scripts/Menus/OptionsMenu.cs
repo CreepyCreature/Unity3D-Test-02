@@ -12,10 +12,6 @@ public class OptionsMenu : MonoBehaviour {
     private string master_prefs_key = "MasterVolume";
     private string music_prefs_key  = "MusicVolume";
     private string sfx_prefs_key    = "SFXVolume";
-
-    void Start ()
-    {
-    }
         
 	public void SetMasterVolume (float volume)
     {
