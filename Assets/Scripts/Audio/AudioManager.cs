@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour {
 
     public Sound[] sounds;
 
-    public static AudioManager Instance;
+    public static AudioManager Instance { get; private set; }
 
     private string master_prefs_key = "MasterVolume";
     private string music_prefs_key = "MusicVolume";

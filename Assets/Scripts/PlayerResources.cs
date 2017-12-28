@@ -9,14 +9,19 @@ public class PlayerResources
     public delegate void CoinCollected();
     public static event CoinCollected OnChange;
 
-    public PlayerResources() {; }
+    public PlayerResources () {; }
 
-    public static void CollectCoin()
+    public static void CollectCoin ()
     {
         coins_++;
         if (OnChange != null)
         {
             OnChange();
         }
+    }
+
+    public static void Reset ()
+    {
+        coins_ = 0;
     }
 }
