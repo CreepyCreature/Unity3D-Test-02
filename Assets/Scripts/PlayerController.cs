@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         float vertical_axis = Input.GetAxis("Vertical");
 
         Vector3 move_force = new Vector3(horizontal_axis, 0, vertical_axis);
+
         rigidbody_.AddForce(move_force * speed_ * Time.deltaTime * 100);
 
         if (Input.GetKeyDown(KeyCode.Mouse0))

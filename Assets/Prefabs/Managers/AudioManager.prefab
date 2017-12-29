@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1907853432173028}
+  m_IsPrefabParent: 1
+--- !u!1 &1907853432173028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4822132568897480}
+  - component: {fileID: 114566719367850376}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4822132568897480
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907853432173028}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114566719367850376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907853432173028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364823d523a5e6648ac64fed5eaf5931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  master_volume: 1
+  music_volume: 1
+  sfx_volume: 1
+  sounds:
+  - name: Hovering
+    channel: 2
+    clip: {fileID: 8300000, guid: 8bfc84f69bf809f47ad87b80b70a28b2, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Crash
+    channel: 2
+    clip: {fileID: 8300000, guid: 1fde7ae81f5432643b461ef0ca0619fa, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PickUp
+    channel: 2
+    clip: {fileID: 8300000, guid: ffb749f93f714dc4d9994b3b24aced3c, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MainTheme
+    channel: 1
+    clip: {fileID: 8300000, guid: c8a55560a723472478fd90eb0decd859, type: 3}
+    volume: 0.11
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Rewinding
+    channel: 2
+    clip: {fileID: 8300000, guid: 8c5894edb5ed7994299fda5dbbc77278, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

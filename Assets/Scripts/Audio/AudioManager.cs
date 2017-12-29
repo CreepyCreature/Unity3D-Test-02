@@ -22,14 +22,15 @@ public class AudioManager : MonoBehaviour {
     void Awake ()
     {
         if (Instance == null)
+        {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else
         {
             Destroy(gameObject);
             return;
         }
-
-        DontDestroyOnLoad(gameObject);
 
         GetPlayerPrefsVolume();
 
