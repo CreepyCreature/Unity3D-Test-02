@@ -14,14 +14,12 @@ public class PlayerResources
     public static void CollectCoin ()
     {
         coins_++;
-        if (OnChange != null)
-        {
-            OnChange();
-        }
+        if (OnChange != null) OnChange();
     }
 
     public static void Reset ()
     {
         coins_ = 0;
+        if (OnChange != null) OnChange();
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     [Range(1f, 100f)]
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigidbody_;
 
     // Use this for initialization
-    void Start()
+    void Start ()
     {
         rigidbody_ = GetComponent<Rigidbody>();
 	}
@@ -38,17 +39,18 @@ public class PlayerController : MonoBehaviour
         }
 	}
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter (Collider other)
     {
         if (other.CompareTag("PickUp"))
         {
             PlayerResources.CollectCoin();
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
             AudioManager.Instance.PlaySound("PickUp");
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter (Collision collision)
     {
         foreach (ContactPoint contact in collision.contacts)
         {

@@ -28,10 +28,12 @@ public class GameManager : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Keypad1))
         {
+            PlayerResources.Reset();
             SceneManager.LoadSceneAsync(1);
         }
         if (Input.GetKeyDown(KeyCode.Keypad2))
         {
+            PlayerResources.Reset();
             SceneManager.LoadSceneAsync(2);
         }        
 	}
