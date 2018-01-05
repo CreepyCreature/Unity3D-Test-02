@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
             Debug.DrawRay(contact.point, contact.normal, Color.white);
         }
 
-        if (collision.relativeVelocity.magnitude > 10f)
+        if (collision.relativeVelocity.magnitude > 100f)
             AudioManager.Instance.PlaySound("Crash");
     }
 }
