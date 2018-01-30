@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -19,6 +20,9 @@ public class PlayerController : MonoBehaviour
     void Start ()
     {
         rigidbody_ = GetComponent<Rigidbody>();
+
+        // Load the stored Player Position from the GameManager
+        LoadStoredPosition();
 	}
 		
 	void FixedUpdate ()
@@ -59,5 +63,27 @@ public class PlayerController : MonoBehaviour
 
         if (collision.relativeVelocity.magnitude > 100f)
             AudioManager.Instance.PlaySound("Crash");
+    }
+
+    public void ChangePosition (Vector3 newPosition)
+    {
+        transform.position = newPosition;
+    }
+
+    // Load the stored Player Position from the GameManager
+    private void LoadStoredPosition()
+    {
+        GameManager gameManager = GameManager.Instance;
+
+        if (gameManager == null)
+        {
+            Debug.LogWarning("PlayerController::GameManager not found! Cannot load Player position");
+        }
+
+        int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (gameManager.HasPlayerPosition(activeSceneIndex))
+        {
+            transform.position = gameManager.GetPlayerPosition(activeSceneIndex);
+        }
     }
 }

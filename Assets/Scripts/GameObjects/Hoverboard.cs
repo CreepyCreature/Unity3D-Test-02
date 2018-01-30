@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hoverboard : MonoBehaviour
 {
-    [Range(0, 50)]public float hoverforce_ = 2.0f;
+    [Range(0, 50)] public float hoverforce_ = 2.0f;
 
     private void OnTriggerStay(Collider other)
     {

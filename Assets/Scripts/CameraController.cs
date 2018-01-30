@@ -8,9 +8,8 @@ public class CameraController : MonoBehaviour
     GameObject player_;
 
     private Vector3 offset_;
-
-	// Use this for initialization
-	void Start ()
+    
+	void Awake ()
     {
         offset_ = transform.position - player_.transform.position;
 	}
