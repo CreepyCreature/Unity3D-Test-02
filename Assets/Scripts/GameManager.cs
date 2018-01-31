@@ -18,6 +18,14 @@ public class GameManager : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
         }
         else {  Destroy(gameObject); return;  }
+
+        Initialize();
+    }
+
+    private void Initialize ()
+    {
+        GameData.Load();
+        checkpointDictionary = GameData.GetCheckpoints();
     }
 
 	// Use this for initialization
@@ -39,6 +47,11 @@ public class GameManager : MonoBehaviour {
             PlayerResources.Reset();
             LoadScene(2);
         }        
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            GameData.Load();
+        }
 	}
 
     public void LoadScene (int sceneIndex)
@@ -51,6 +64,10 @@ public class GameManager : MonoBehaviour {
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         checkpointDictionary[sceneIndex] = newPosition;
         savedPosition = newPosition;
+
+        GameData.SetCheckpoint(sceneIndex, newPosition);
+        GameData.Save();
+
         Debug.Log("GameManager::Saving Player position " + checkpointDictionary[sceneIndex] + " at Scene Index "+ sceneIndex);
     }
 

@@ -98,8 +98,8 @@ public class AudioManager : MonoBehaviour {
         }
         
         if (s.source.isPlaying)
-            // The problem with PlayOneShot is that you cannot Stop
-            // the audio clip from playing until it's finished
+            // The problem with PlayOneShot is that you cannot STOP
+            // the Audio Clip from playing until it's finished
             s.source.PlayOneShot(s.clip);
         else
             s.source.PlayDelayed(0f);
