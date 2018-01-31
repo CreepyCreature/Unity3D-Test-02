@@ -33,7 +33,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1907853432173028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -87,6 +87,13 @@ MonoBehaviour:
     channel: 2
     clip: {fileID: 8300000, guid: 8c5894edb5ed7994299fda5dbbc77278, type: 3}
     volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Checkpoint
+    channel: 2
+    clip: {fileID: 8300000, guid: fdce85862e3ddbe41a04cee6f58d81a8, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}

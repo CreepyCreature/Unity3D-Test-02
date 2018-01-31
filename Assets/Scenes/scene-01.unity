@@ -821,11 +821,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114566719367850376, guid: 5d11dd82d5283f54c9c6dce02faf228e,
-        type: 2}
-      propertyPath: sounds.Array.size
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 4822132568897480, guid: 5d11dd82d5283f54c9c6dce02faf228e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -856,31 +851,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4822132568897480, guid: 5d11dd82d5283f54c9c6dce02faf228e, type: 2}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114566719367850376, guid: 5d11dd82d5283f54c9c6dce02faf228e,
-        type: 2}
-      propertyPath: sounds.Array.data[5].name
-      value: Checkpoint
-      objectReference: {fileID: 0}
-    - target: {fileID: 114566719367850376, guid: 5d11dd82d5283f54c9c6dce02faf228e,
-        type: 2}
-      propertyPath: sounds.Array.data[5].channel
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114566719367850376, guid: 5d11dd82d5283f54c9c6dce02faf228e,
-        type: 2}
-      propertyPath: sounds.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: fdce85862e3ddbe41a04cee6f58d81a8, type: 3}
-    - target: {fileID: 114566719367850376, guid: 5d11dd82d5283f54c9c6dce02faf228e,
-        type: 2}
-      propertyPath: sounds.Array.data[5].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114566719367850376, guid: 5d11dd82d5283f54c9c6dce02faf228e,
-        type: 2}
-      propertyPath: sounds.Array.data[5].pitch
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
