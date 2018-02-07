@@ -69,7 +69,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: PickUp
+  - name: CollectCoin
     channel: 2
     clip: {fileID: 8300000, guid: ffb749f93f714dc4d9994b3b24aced3c, type: 3}
     volume: 0.3

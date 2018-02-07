@@ -8,10 +8,22 @@ using System.IO;
 using System.Linq;
 
 //[System.Serializable]
-public struct CheckpointProxy
+public struct CheckpointStruct
 {
-    public int Key { get; set; }
-    public Vector3 Value { get; set; }
+    public int SceneIndex { get; set; }
+    public Vector3 Position { get; set; }
+}
+
+public struct CoinCountStruct
+{
+    public int SceneIndex { get; set; }
+    public int CoinCount { get; set; }
+}
+
+public struct DestroyedCoinStruct
+{
+    public int SceneIndex { get; set; }
+    public string CoinName { get; set; }
 }
 
 [XmlRoot("GameData")]
@@ -25,31 +37,41 @@ public class GameData
     private static string XMLFileName = "/GameData.xml";
     public static string gameDataFile = Application.persistentDataPath + XMLFileName;
 
+    [XmlArray("DestroyedCoins")]
+    [XmlArrayItem(ElementName = "DestroyedCoin")]
+    public List<DestroyedCoinStruct> destroyedCoins = new List<DestroyedCoinStruct>();
+
+    [XmlArray("CoinCount")]
+    [XmlArrayItem(ElementName = "Coins")]
+    public List<CoinCountStruct> coinCountProxy = new List<CoinCountStruct>();
+
     [XmlArray("Checkpoints")]
     [XmlArrayItem(ElementName = "Checkpoint")]
-    public List<CheckpointProxy> checkpointProxy = new List<CheckpointProxy>();
+    public List<CheckpointStruct> checkpointsProxy = new List<CheckpointStruct>();
+
+    [XmlElement("LastSceneIndex")]
+    public int lastSceneIndex = 0;
+
+    [XmlArray("InventoryItems")]
+    [XmlArrayItem(ElementName = "InventoryItem")]
+    public List<PickupItemInfo> inventoryItems = new List<PickupItemInfo>();
 
     [XmlIgnore]
     private static Dictionary<int, Vector3> checkpoints = new Dictionary<int, Vector3>();
-    
-    //[XmlArray("Checkpoints")]
-    //[XmlArrayItem(ElementName = "Checkpoint")]
-    //private static List<CheckpointProxy> CheckpointProxy { get; set; }
-    //[XmlIgnore]
-    //private static Dictionary<int, Vector3> CheckpointDictionary
-    //{
-    //    get { return CheckpointProxy.ToDictionary(x => x.Key, x => x.Value); }
-    //    set { CheckpointProxy = value.Select(x => new global::CheckpointProxy() { Key = x.Key, Value = x.Value }).ToList(); }
-    //}
 
     public static void Save ()
     {
+        foreach (var i in Instance.inventoryItems)
+        {
+            Debug.LogWarning(i.name);
+        }
+
         XmlSerializer serializer = new XmlSerializer(typeof(GameData));
         FileStream fileStream = new FileStream(gameDataFile, FileMode.Create);
         serializer.Serialize(fileStream, Instance);
         fileStream.Close();
 
-        Debug.Log("GameData::Game Data saved in " + gameDataFile);
+        // Debug.Log("GameData::Game Data saved in " + gameDataFile);
     }
 
     public static void Load ()
@@ -72,26 +94,95 @@ public class GameData
         {
             fileStream.Close();
         }
+    }
 
-        foreach (var c in instance.checkpointProxy)
+    public static void Clear ()
+    {
+        Instance.destroyedCoins.Clear();
+        Instance.coinCountProxy.Clear();
+        Instance.checkpointsProxy.Clear();
+        checkpoints.Clear();
+        Instance.inventoryItems.Clear();
+        Save();
+    }
+
+    public static void UpdateDestroyedCoins (int sceneIndex, string coinName)
+    {
+        if (Instance.destroyedCoins.Exists(x => x.SceneIndex == sceneIndex && x.CoinName == coinName))
         {
-            Debug.Log("Loaded " + c.Key + " => " + c.Value);
+            return;
         }
+
+        DestroyedCoinStruct coinStruct = new DestroyedCoinStruct();
+        coinStruct.SceneIndex = sceneIndex;
+        coinStruct.CoinName = coinName;
+        Instance.destroyedCoins.Add(coinStruct);
+    }
+
+    public static void UpdateDestroyedItems(int sceneIndex, string coinName)
+    {
+        if (Instance.destroyedCoins.Exists(x => x.SceneIndex == sceneIndex && x.CoinName == coinName))
+        {
+            return;
+        }
+
+        DestroyedCoinStruct coinStruct = new DestroyedCoinStruct();
+        coinStruct.SceneIndex = sceneIndex;
+        coinStruct.CoinName = coinName;
+        Instance.destroyedCoins.Add(coinStruct);
+    }
+
+    public static List<string> GetDestroyedCoins (int sceneIndex)
+    {
+        List<string> coinNamesList = new List<string>();
+        var coinStruct = Instance.destroyedCoins.FindAll(x => x.SceneIndex == sceneIndex);
+        foreach (var coin in coinStruct)
+        {
+            coinNamesList.Add(coin.CoinName);
+        }
+
+        return coinNamesList;
+    }
+
+    public static void UpdateCoinCount (int sceneIndex, int coinCount)
+    {
+        if (Instance.coinCountProxy.Exists(x => x.SceneIndex == sceneIndex))
+        {
+            Instance.coinCountProxy.RemoveAll(x => x.SceneIndex == sceneIndex);
+        }
+
+        CoinCountStruct coinStruct = new CoinCountStruct();
+        coinStruct.SceneIndex = sceneIndex;
+        coinStruct.CoinCount = coinCount;
+        Instance.coinCountProxy.Add(coinStruct);
+    }
+
+    public static int GetCoinCount (int sceneIndex)
+    {
+        if (Instance.coinCountProxy.Exists(x => x.SceneIndex == sceneIndex))
+        {
+            int count = Instance.coinCountProxy.Find(x => x.SceneIndex == sceneIndex).CoinCount;
+            return count;
+        }
+
+        return 0;
     }
 
     public static void SetCheckpoint (int sceneIndex, Vector3 position)
     {
         checkpoints[sceneIndex] = position;
 
-        if (Instance.checkpointProxy.Exists(x => x.Key == sceneIndex))
+        if (Instance.checkpointsProxy.Exists(x => x.SceneIndex == sceneIndex))
         {
-            Instance.checkpointProxy.RemoveAll(x => x.Key == sceneIndex);
+            Instance.checkpointsProxy.RemoveAll(x => x.SceneIndex == sceneIndex);
         }
 
-        CheckpointProxy newCheckpoint = new CheckpointProxy();
-        newCheckpoint.Key = sceneIndex;
-        newCheckpoint.Value = position;
-        Instance.checkpointProxy.Add(newCheckpoint);
+        CheckpointStruct newCheckpoint = new CheckpointStruct();
+        newCheckpoint.SceneIndex = sceneIndex;
+        newCheckpoint.Position = position;
+        Instance.checkpointsProxy.Add(newCheckpoint);
+
+        Instance.lastSceneIndex = sceneIndex;
     }
 
     public static Dictionary<int, Vector3> GetCheckpoints ()
@@ -99,26 +190,38 @@ public class GameData
         return checkpoints;
     }
 
+    public static int GetLastScene ()
+    {
+        return Instance.lastSceneIndex;
+    }
+
     private static void DeserializeCheckpoints ()
     {
-        var checkpointList = Instance.checkpointProxy;
+        var checkpointList = Instance.checkpointsProxy;
         foreach (var c in checkpointList)
         {
-            checkpoints[c.Key] = c.Value;
+            checkpoints[c.SceneIndex] = c.Position;
         }
     }
 
-    private static void SerializeCheckpointDictionary()
+    public static void SaveInventoryItem (PickupItemInfo item)
     {
-        //foreach (var key in checkpoints.Keys)
-        //{
-        //    Debug.Log("adding");
-        //    Instance.checkpointProxy.Add(new CheckpointProxy(key, checkpoints[key]));
-        //}
+        if (Instance.inventoryItems.Exists(x => x.id == item.id))
+        {
+            Instance.inventoryItems.RemoveAll(x => x.id == item.id);
+        }
 
-        //foreach (var e in Instance.checkpointProxy)
-        //{
-        //    Debug.Log(e.Key + " => " + e.Value);
-        //}
+        Instance.inventoryItems.Add(item);
+        Debug.Log("Added " + item.name);
+
+        foreach (var i in Instance.inventoryItems)
+        {
+            Debug.Log(i.name);
+        }
+    }
+
+    public static List<PickupItemInfo> GetInventoryItems ()
+    {
+        return Instance.inventoryItems.ToList();
     }
 }

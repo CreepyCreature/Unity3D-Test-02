@@ -26,5 +26,7 @@ public class VolumeSlider : MonoBehaviour {
                 break;
         }
         GetComponent<Slider>().value = volume;
+
+        
     }
 }

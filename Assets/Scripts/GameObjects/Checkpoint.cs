@@ -21,7 +21,7 @@ public class Checkpoint : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            GameManager.Instance.SavePlayerPosition(other.transform.position);
+            GameManager.Instance.SaveCheckpoint(other.transform.position);
             AudioManager.Instance.PlaySound("Checkpoint");
 
             if (OnCheckpointEnter != null)

@@ -113,8 +113,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d1fffe6bb2b404a908a3acae7d063f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  win_condition_: 8
+  playerInfoUI: {fileID: 0}
   coin_count_text_: {fileID: 0}
   win_text_: {fileID: 0}
+  coin_collected_text_: {fileID: 1594889790048796, guid: a2a4a4b018b4cf941bdd2071361b7d9a,
+    type: 2}
 --- !u!114 &114529099683392672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06d700ce0d604b74396a45a578cabe9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_recorded_time: 5
+  max_recorded_time: 3
 --- !u!114 &114899348794858958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,7 +151,7 @@ SphereCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1700593976930266}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d8119724ce9cc8e498583a78bcc6ed41, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

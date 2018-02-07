@@ -45,13 +45,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter (Collider other)
     {
-        if (other.CompareTag("PickUp"))
-        {
-            PlayerResources.CollectCoin();
-            //other.gameObject.SetActive(false);
-            Destroy(other.gameObject);
-            AudioManager.Instance.PlaySound("PickUp");
-        }
+        //if (other.CompareTag("PickUp"))
+        //{
+        //    PlayerResources.CollectCoin();
+        //    //other.gameObject.SetActive(false);
+        //    Destroy(other.gameObject);
+        //    AudioManager.Instance.PlaySound("PickUp");
+        //}
     }
 
     private void OnCollisionEnter (Collision collision)
